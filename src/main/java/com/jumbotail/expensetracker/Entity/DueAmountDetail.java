@@ -16,6 +16,8 @@ public class DueAmountDetail {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer Id;
 
+    private String person; //person is identified using email
+
     private Double amount;
     private LocalDate repaymentDate;
 }
