@@ -7,10 +7,11 @@ import com.jumbotail.expensetracker.Repository.UserRepo;
 import com.jumbotail.expensetracker.dtos.ExpenseDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.util.Optional;
 
 @Service
 @Slf4j
@@ -23,18 +24,20 @@ public class ExpenseService {
     @Autowired
     private ExpenseDetailRepo expenseDetailRepo;
 
+    @Autowired
+    private UserService userService;
+
     public void createUser(String email) {
         User user = new User();
         user.setEmail(email);
         userRepo.save(user);
     }
 
-    public void addUserExpense(String userEmail, ExpenseDTO expenseDTO) {
+    public ResponseEntity<String> addUserExpense(String userEmail, ExpenseDTO expenseDTO) {
         try{
-            Optional<User> userId = userRepo.findById(userEmail);
-            userId.get();
+            User user = userService.getUserById(userEmail);
             ExpenseDetail expenseDetail = new ExpenseDetail();
-            expenseDetail.setUserId(userId.get().getEmail());
+            expenseDetail.setUserId(user.getEmail());
             expenseDetail.setExpenseDate(LocalDate.now());
             expenseDetail.setReasonForExpense(expenseDTO.getReasonForExpense());
             expenseDetail.setPlace(expenseDTO.getPlace());
@@ -43,8 +46,9 @@ public class ExpenseService {
 
         }catch (Exception e){
             log.error("I am handling" + e.getMessage());
+            return new ResponseEntity<>("User Not Found" ,HttpStatus.NOT_FOUND);
         }
-
+        return new ResponseEntity<String>(HttpStatus.OK);
     }
 
 }
