@@ -17,7 +17,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/")
-public class ExpenseController {
+public class ExpenseTrackerController {
 
     @Autowired
     private ExpenseService expenseService;
@@ -44,6 +44,11 @@ public class ExpenseController {
         return dueAmountDetailService.addDueAmountData(userEmail, dueAmountDTO);
     }
 
+    @RequestMapping(method = RequestMethod.POST , value = "/pay_due_amount/{userEmail}/{method}")
+    public ResponseEntity<String> settleDueAmountUser(@PathVariable String userEmail, @PathVariable Integer method , @RequestBody SettleAmountDTO settleAmountDTO){
+        return settleDueAmountService.settleUserAmount(userEmail, method, settleAmountDTO);
+    }
+
     @RequestMapping(method = RequestMethod.GET, value = "/get_all_expense/{userEmail}")
     public List<ExpenseDetail> getAllExpenseOfAUser(@PathVariable String userEmail){
         return expenseService.getAllExpenseOfAUser(userEmail);
@@ -52,11 +57,6 @@ public class ExpenseController {
     @RequestMapping(method = RequestMethod.GET, value = "/get_all_due_amount_of_user/{userEmail}")
     public List<DueAmountDetail> getAllDueAmountDetailOfUser(@PathVariable String userEmail){
         return dueAmountDetailService.getAllDueAmountDetailOfUser(userEmail);
-    }
-
-    @RequestMapping(method = RequestMethod.POST , value = "/pay_due_amount/{userEmail}/{method}")
-    public ResponseEntity<String> settleDueAmountUser(@PathVariable String userEmail, @PathVariable Integer method , @RequestBody SettleAmountDTO settleAmountDTO){
-        return settleDueAmountService.settleUserAmount(userEmail, method, settleAmountDTO);
     }
 
 }
