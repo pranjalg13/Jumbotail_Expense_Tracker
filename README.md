@@ -8,13 +8,13 @@ Assignment Submission for Jumbotail
 
 ## Technology Used
 
-- Spring Boot 
+- ###Spring Boot 
   - Spring Boot allows easy setup of standalone Spring-based applications with high scalibilty.
   
-- Swagger-UI
+- ###Swagger-UI
   - It is a framework used to demonstrate the API in better format similar to Postman
 
-- Database Used
+- ###Database Used
     - Mysql
 
 ### Features
