@@ -75,11 +75,11 @@ git clone <Repo_URL>
 * RequestParam: userEmail
 * Input :
   ```
-      {
-        "amount": 0,
-        "payDuePerson": "string",
-        "repaymentDate": "string"
-      }
+  {
+    "amount": 0,
+    "payDuePerson": "string",
+    "repaymentDate": "string"
+  }
   ```
 * Output :
   ```
@@ -137,15 +137,15 @@ git clone <Repo_URL>
   ```
 * Output :
   ```
-    [
-      {
-        "amount": 0,
-        "id": 0,
-        "payDuePerson": "string",
-        "repaymentDate": "string",
-        "userId": "string"
-      }
-    ]
+  [
+    {
+      "amount": 0,
+      "id": 0,
+      "payDuePerson": "string",
+      "repaymentDate": "string",
+      "userId": "string"
+    }
+  ]
   ```
 
 ### Error and Exception
