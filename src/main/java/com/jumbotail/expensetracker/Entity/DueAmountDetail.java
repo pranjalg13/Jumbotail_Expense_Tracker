@@ -18,7 +18,7 @@ public class DueAmountDetail {
 
     private String userId;
 
-    private String payDuePerson; //person is identified using email
+    private String payDuePerson; //person whose money need to be paid is identified using email
 
     private Double amount;
     private LocalDate repaymentDate;

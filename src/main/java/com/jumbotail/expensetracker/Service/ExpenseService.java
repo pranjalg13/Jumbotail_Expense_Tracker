@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Service
 @Slf4j
@@ -45,10 +46,13 @@ public class ExpenseService {
             expenseDetailRepo.save(expenseDetail);
 
         }catch (Exception e){
-            log.error("I am handling" + e.getMessage());
+            log.error(e.getMessage());
             return new ResponseEntity<>("User Not Found" ,HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<String>(HttpStatus.OK);
     }
 
+    public List<ExpenseDetail> getAllExpenseOfAUser(String userEmail) {
+        return expenseDetailRepo.findAllByUserId(userEmail);
+    }
 }

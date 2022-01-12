@@ -10,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @Slf4j
 public class DueAmountDetailService {
@@ -26,14 +28,18 @@ public class DueAmountDetailService {
             DueAmountDetail dueAmountDetail = new DueAmountDetail();
             dueAmountDetail.setAmount(dueAmountDTO.getAmount());
             dueAmountDetail.setUserId(user.getEmail());
-            dueAmountDetail.setPayDuePerson(dueAmountDTO.getPerson());;
+            dueAmountDetail.setPayDuePerson(dueAmountDTO.getPayDuePerson());;
             dueAmountDetail.setRepaymentDate(dueAmountDTO.getRepaymentDate());
             dueAmountRepo.save(dueAmountDetail);
         }
         catch (Exception e){
-            log.error("I am handling" + e.getMessage());
+            log.error(e.getMessage());
             return new ResponseEntity<>("User Not Found" , HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<String>(HttpStatus.OK);
+    }
+
+    public List<DueAmountDetail> getAllDueAmountDetailOfUser(String userId){
+        return dueAmountRepo.findAllByUserId(userId);
     }
 }
