@@ -9,7 +9,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import static java.lang.Math.abs;
 
 @Service
 @Slf4j
@@ -47,7 +46,7 @@ public class SettleDueAmountService {
         }
         else if(methodBit == 1){
             // Last Repayment Date First
-            DueAmountDetail firstDueUser = dueAmountRepo.findTopByOrderByRepaymentDateDesc(userEmail);
+            DueAmountDetail firstDueUser = dueAmountRepo.findFirstOrderDate(userEmail);
             if(firstDueUser!=null) {
                 double remainingAmount = firstDueUser.getAmount() - settleAmountDTO.getAmount();
                 if (remainingAmount <= 0) {

@@ -11,6 +11,6 @@ import java.util.List;
 public interface DueAmountRepo extends JpaRepository<DueAmountDetail, Integer> {
     List<DueAmountDetail> findAllByUserId(String userId);
     DueAmountDetail findTopByUserId(String userId);
-    @Query(value = "SELECT u from DueAmountDetail u WHERE u.userId=:userId")
-    DueAmountDetail findTopByOrderByRepaymentDateDesc(@Param("userId") String userId);
+    @Query(value = "SELECT * from due_amount_detail u WHERE u.user_id=:userId order by repayment_date desc LIMIT 1", nativeQuery = true)
+    DueAmountDetail findFirstOrderDate(@Param("userId") String userId);
 }
