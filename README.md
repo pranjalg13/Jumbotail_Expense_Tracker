@@ -1,9 +1,9 @@
-# JumboTail_Assignment
+# Jumbotail_Assignment
 ## An Expense Tracker REST Api using Spring boot
 Assignment Submission for Jumbotail
 
-### Name: Pranjal Goyal
-### Email: pranjalgoyal13@gmail.com
+#### Name: Pranjal Goyal
+#### Email: pranjalgoyal13@gmail.com
 
 
 ## Technology Used
