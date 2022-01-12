@@ -1,32 +1,39 @@
 # JumboTail_Assignment
-Assignment Submission for Jumbotail
-#### Name: Pranjal Goyal
-#### Email: pranjalgoyal13@gmail.com
-
 ## An Expense Tracker REST Api using Spring boot
+Assignment Submission for Jumbotail
+
+### Name: Pranjal Goyal
+### Email: pranjalgoyal13@gmail.com
+
 
 ## Technology Used
 
-### Spring Boot
-    Spring Boot allows easy setup of standalone Spring-based applications with high scalibilty.
-### Swagger-UI
-    It is a framework used to demostrate the API in better format similar to Postman
+- Spring Boot 
+  - Spring Boot allows easy setup of standalone Spring-based applications with high scalibilty.
+  
+- Swagger-UI
+  - It is a framework used to demonstrate the API in better format similar to Postman
 
-## Database Used
-    Mysql
+- Database Used
+    - Mysql
 
 ### Features
 - I have tried to decouple as much as I can in the assignment.
+- User can add register themselves using thier email Id
+- User can add expense and due amount
+- User can remove the debt amount by following algorithms:
+  - Method 1: Removing the due which was added first 
+  - Method 2: Removing the due based of repayment date
 - Dividing the code into separate modules as applicable. (Modularity)
 
 ### How to Run
 
 ```
-    1. First of all clone the Repo:
-    git clone <Repo_URL>
-    2. Open with Fav, IDE
-    3. The Application is running on port 8080
-    -> Swagger-Url: localhost:8080/swagger-ui.html
+1. First of all clone the Repo:
+git clone <Repo_URL>
+2. Open with Fav, IDE
+3. The Application is running on port 8080
+-> Swagger-Url: localhost:8080/swagger-ui.html
 ```
 
 ### Endpoints for the application:
@@ -40,8 +47,8 @@ Assignment Submission for Jumbotail
    ```
 * Sample Output :
    ```
-   {
-		"success": true,
+    {
+	    "success": true,
     }
 	```
 
@@ -86,11 +93,11 @@ Assignment Submission for Jumbotail
 * Param: Method--> Integer (Pass 0 to follow First in First out and 1 to Last Repayment Method)
 * Input :
   ```
-      {
-        "amount": 0,
-        "payDuePerson": "string",
-        "repaymentDate": "string"
-      }
+  {
+    "amount": 0,
+    "payDuePerson": "string",
+    "repaymentDate": "string"
+  }
   ```
 * Output :
   ```
@@ -104,13 +111,20 @@ Assignment Submission for Jumbotail
 * Path : `/get_all_expense/{userEmail}`
 * Input :
   ```
-      UserEmail (Path Variable)
+    UserEmail (Path Variable)
   ```
 * Output :
   ```
-  {
-      "[All Expenses]"
-  }
+  [
+    {
+      "expenseDate": "string",
+      "id": 0,
+      "modeOfPayment": "string",
+      "place": "string",
+      "reasonForExpense": "string",
+      "userId": "string"
+    }
+  ]
   ```
 
 5. Get all Due amount pending by user 
