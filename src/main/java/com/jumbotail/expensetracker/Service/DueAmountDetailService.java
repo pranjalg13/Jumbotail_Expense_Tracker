@@ -31,6 +31,7 @@ public class DueAmountDetailService {
             dueAmountDetail.setPayDuePerson(dueAmountDTO.getPayDuePerson());;
             dueAmountDetail.setRepaymentDate(dueAmountDTO.getRepaymentDate());
             dueAmountRepo.save(dueAmountDetail);
+            log.info("Saved the Due Amount for user" + userEmail);
         }
         catch (Exception e){
             log.error(e.getMessage());

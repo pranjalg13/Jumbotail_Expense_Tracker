@@ -42,7 +42,7 @@ git clone <Repo_URL>
 * Input :
    ```
    {
-		"email":"pranjalgoyal13@example.com"
+	  "email":"pranjalgoyal13@example.com"
    }
    ```
 * Sample Output :

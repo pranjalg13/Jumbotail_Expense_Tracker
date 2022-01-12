@@ -31,7 +31,6 @@ public class SettleDueAmountService {
         if(methodBit == 0){
             //First In First Out
             DueAmountDetail firstDueUser = dueAmountRepo.findTopByUserId(userEmail);
-            log.info("Element is" + firstDueUser);
             if(firstDueUser!=null){
                 double remainingAmount = firstDueUser.getAmount() - settleAmountDTO.getAmount();
                 if(remainingAmount <= 0){

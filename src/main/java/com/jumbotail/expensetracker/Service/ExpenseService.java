@@ -32,6 +32,7 @@ public class ExpenseService {
         User user = new User();
         user.setEmail(email);
         userRepo.save(user);
+        log.info("User Created Successfully " + email);
     }
 
     public ResponseEntity<String> addUserExpense(String userEmail, ExpenseDTO expenseDTO) {
@@ -44,10 +45,11 @@ public class ExpenseService {
             expenseDetail.setPlace(expenseDTO.getPlace());
             expenseDetail.setModeOfPayment(expenseDTO.getModeOfPayment());
             expenseDetailRepo.save(expenseDetail);
+            log.info("Successfully Added the Expense for User "+ userEmail);
 
         }catch (Exception e){
             log.error(e.getMessage());
-            return new ResponseEntity<>("User Not Found" ,HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("User Not Found " + userEmail ,HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<String>(HttpStatus.OK);
     }
