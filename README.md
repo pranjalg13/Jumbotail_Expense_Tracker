@@ -26,6 +26,13 @@ Assignment Submission for Jumbotail
   - Method 2: Removing the due based of repayment date
 - Dividing the code into separate modules as applicable. (Modularity)
 
+
+### Assumptions
+
+- The repayment is only based on two method/algorithm as stated above. In this no need to specify the person to whom the amount needs to be paid
+- Users are register only based on their email.
+
+
 ### How to Run
 
 ```
